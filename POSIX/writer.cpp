@@ -19,7 +19,7 @@ int main() {
     perror("Writer: sem_open failed!\n");
   }
 
-  int fd = shm_open("/shmem", O_CREAT | O_RDWR, 0600);
+  int fd = shm_open("/shmem", O_CREAT | O_RDWR, 0666);
   if (fd < 0) {
     perror("Writer: shm_open failed!\n");
     return EXIT_FAILURE;
