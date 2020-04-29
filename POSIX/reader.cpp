@@ -14,7 +14,7 @@
 #define SIZE (NUM * sizeof(int))
 
 int main() {
-  sem_t* sem_id = sem_open("/sem", O_CREAT, 0600, 0);
+  sem_t* sem_id = sem_open("/sem", O_CREAT, 0666, 0);
   if (sem_id < SEM_FAILED) {
     perror("Reader: sem_open failed!\n");
   }
