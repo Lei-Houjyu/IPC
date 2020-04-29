@@ -50,9 +50,9 @@ int main() {
     perror("Writer: sem_close failed!\n");
   }
 
-  if (sem_unlink("/sem") < 0) {
+  /*if (sem_unlink("/sem") < 0) {
     perror("Writer: sem_unlink failed!\n");
-  }
+  }*/
 
   munmap(data, SIZE);
 

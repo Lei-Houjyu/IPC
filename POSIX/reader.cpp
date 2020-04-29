@@ -44,7 +44,7 @@ int main() {
 
   close(fd);
 
-  shm_unlink(NAME);
+  //shm_unlink(NAME);
 
   return EXIT_SUCCESS;
 }
