@@ -10,6 +10,7 @@
 #include <sys/wait.h>
 
 #define SIZE 1024
+#define JNI_NUM 3
 
 int main() {
   sem_t* sem_id_jvm = sem_open("/sem-jvm", O_CREAT, 0666, 0);
@@ -31,14 +32,16 @@ int main() {
   char *data =
       (char *)mmap(0, SIZE, PROT_READ, MAP_SHARED, fd, 0);
 
-  if (sem_wait(sem_id_jvm) < 0) {
-    perror("Reader: sem_wait failed!\n");
-  }
+  for (int i = 0; i < JNI_NUM; i++) {    
+    if (sem_wait(sem_id_jvm) < 0) {
+      perror("Reader: sem_wait failed!\n");
+    }
 
-  printf("Received: %s\n", data);
+    printf("Received: %s\n", data);
 
-  if (sem_post(sem_id_container) < 0) {
-    perror("Reader: sem_post failed!\n");
+    if (sem_post(sem_id_container) < 0) {
+      perror("Reader: sem_post failed!\n");
+    }
   }
 
   if (sem_close(sem_id_jvm) != 0) {
