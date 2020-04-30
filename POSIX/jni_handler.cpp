@@ -10,7 +10,7 @@
 #include <sys/wait.h>
 
 #define SIZE 1024
-#define JNI_NUM 3
+#define JNI_NUM 7
 
 int main() {
   sem_t* sem_id_jvm = sem_open("/sem-jvm", O_CREAT, 0666, 0);
